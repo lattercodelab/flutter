@@ -1,45 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lab/tools/widget_helper.dart';
 import 'dart:async';
-import 'dart:convert';
 import 'package:http/http.dart' as Webserver;
 
-class HttpRequestScreen extends StatefulWidget{
+class TestHttpScreen extends StatefulWidget{
 
   @override
-  _HttpRequestState createState() => _HttpRequestState();
+  _TestHttpState createState() => _TestHttpState();
 }
 
-class _HttpRequestState extends State<HttpRequestScreen>{
+class _TestHttpState extends State<TestHttpScreen>{
 
   String _response;
 
-  Future<void> _getHttpRequest() async{
+  Future<void> _httpCall() async{
     final response = await Webserver.Client().get("https://jsonplaceholder.typicode.com/photos");
-    final jsonStr = response.body.toString();
     setState(() {
-      _response = jsonStr;
+      _response = response.body.toString();
     });
+  }
+
+  @override
+  void dispose() {
+    Webserver.Client().close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Http Request")
+        title: Text("Test Http")
       ),
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            RaisedButton(
-              child: Text("Get Request"),
-              onPressed: (){
-                _getHttpRequest();
-              },
-            )
-          ],
-        ),
+      body: ListView(
+        children: <Widget>[
+          // Expanded(
+          //   flex: 1,
+          //   child: Text("$_response"),
+          // ),
+          // Expanded(
+          //   flex: 2,
+          //   child: WidgetHelper.buttonPressed(context, (){
+          //     _httpCall();  
+          //   }),
+          // )
+          
+        ],
       )
     );
   }

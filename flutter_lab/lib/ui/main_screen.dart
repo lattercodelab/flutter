@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab/object/app_config.dart';
-import 'package:flutter_lab/ui/binding_screen.dart';
+import 'package:flutter_lab/tools/widget_helper.dart';
+import 'package:flutter_lab/ui/test_service_screen.dart';
+import 'package:flutter_lab/ui/test_widget/test_wrap_screen.dart';
+import 'package:flutter_lab/ui/test_widget_screen.dart';
 
 class MainScreen extends StatelessWidget {
   // This widget is the root of your application.
@@ -14,7 +17,6 @@ class MainScreen extends StatelessWidget {
       home: MyHomePage(title: config?.appName ?? 'Flutter Lab'),
     );
   }
-
 }
 
 class MyHomePage extends StatefulWidget {
@@ -27,26 +29,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-              RaisedButton(
-                child: Text("Binding"), 
-                onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => BindingScreen()));
-                },
-              )
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
         ),
-      ),
-    );
+        body: GridView(
+          children: <Widget>[
+            WidgetHelper.buttonOpen(context, TestWidgetScreen(), name: "Widget", bgColor: Colors.red),
+            WidgetHelper.buttonOpen(context, TestServiceScreen(), name: "Service", bgColor: Colors.yellow, textColor: Colors.black),
+            WidgetHelper.buttonOpen(context, TestWrapScreen(), name: "Colunm Widget", bgColor: Colors.blue, textColor: Colors.black),
+          ],
+          gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        ));
   }
+
+  
 }
