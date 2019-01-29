@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_lab/tools/widget_helper.dart';
+
+class CustomScrollViewScreen extends StatefulWidget {
+  @override
+  _CustomScrollViewScreenState createState() => _CustomScrollViewScreenState();
+}
+
+class _CustomScrollViewScreenState extends State<CustomScrollViewScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              title: Text("SliverAppBar"),
+              expandedHeight: 200,
+              flexibleSpace: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Text("Header", style: TextStyle(color: Colors.white, background: P)
+                ],
+              ),
+            ),
+              // SliverList(
+              //   delegate: SliverChildListDelegate([
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //     WidgetHelper.colorBox(height: 100, width: 100, color: Colors.red[200]),
+              //   ]),
+              // ),
+              SliverFixedExtentList(
+                itemExtent: 200,
+                delegate: SliverChildBuilderDelegate((context, indxe){
+                  return WidgetHelper.colorBox(height: 100, width: 100, color: Colors.green[200]);
+                }, childCount: 200)
+              )
+          ],
+      ),
+    );
+  }
+}

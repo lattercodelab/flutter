@@ -11,11 +11,9 @@ class _HttpState extends State<HttpScreen> {
   String _response;
 
   Future<void> _httpCall() async {
-    final response = await WebServer.Client()
-        .get("https://jsonplaceholder.typicode.com/photos");
+    final response = await WebServer.Client().get("https://jsonplaceholder.typicode.com/photos");
     setState(() {
-      _response =
-          "Most apps contain several screens for displaying different types of information. For example, an app might have a screen that displays products. Users can then tap the image of a product to get more detailed information on a new screen.";
+      _response = response.body.toString();
     });
   }
 
@@ -25,15 +23,26 @@ class _HttpState extends State<HttpScreen> {
         appBar: AppBar(title: Text("Http")),
         body: Column(
           children: <Widget>[
-            Column(children: <Widget>[Text(_response ?? "")]),
-            Expanded(
-              flex: 2,
-              child: RaisedButton(
-                child: Text("Load API"),
-                onPressed: () {
-                  _httpCall();
-                },
-              ),
+            Text(_response ?? ""),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
+                  width: 150,
+                  height: 50,
+                  child: RaisedButton(
+                      color: Colors.red[400],
+                      textColor: Colors.white,
+                      child: Text(
+                        "Load API",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: () {
+                        _httpCall();
+                      }),
+                )
+              ],
             )
           ],
         ));
