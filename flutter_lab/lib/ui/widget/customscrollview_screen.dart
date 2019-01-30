@@ -14,14 +14,13 @@ class _CustomScrollViewScreenState extends State<CustomScrollViewScreen> {
         body: CustomScrollView(
           slivers: <Widget>[
             SliverAppBar(
-              title: Text("SliverAppBar"),
               expandedHeight: 200,
-              flexibleSpace: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Text("Header", style: TextStyle(color: Colors.white, background: P)
-                ],
-              ),
+              pinned: true,
+              elevation: 10.0,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text("FlexibleSapceBar"),
+                collapseMode: CollapseMode.parallax,
+              )
             ),
               // SliverList(
               //   delegate: SliverChildListDelegate([
@@ -46,3 +45,4 @@ class _CustomScrollViewScreenState extends State<CustomScrollViewScreen> {
     );
   }
 }
+

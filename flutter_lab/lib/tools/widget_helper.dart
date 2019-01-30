@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class WidgetHelper{
 
@@ -12,14 +13,14 @@ class WidgetHelper{
           width: width,
           height: height,
           padding: const EdgeInsets.all(20.0),
-          color: color,
+          color: randomColors(),
           child: Text("Item"),
         );
   }
 
-  static RaisedButton buttonOpen(BuildContext context, Widget screen, {String name = "Simple Item", Color textColor = Colors.black, Color bgColor = Colors.yellow}) {
+  static RaisedButton buttonOpen(BuildContext context, Widget screen, {String name = "Simple Item", Color textColor = Colors.white, Color bgColor}) {
     return RaisedButton(
-            color: bgColor,
+            color: bgColor ?? randomColors(),
             child: Text(name,
                 style: TextStyle(
                     fontSize: 20,
@@ -41,5 +42,9 @@ class WidgetHelper{
                         fontWeight: FontWeight.bold)),
                 onPressed: onPressed,
               );
+  }
+
+  static randomColors(){
+    return Color((math.Random().nextDouble() * 0xFFFFFF).toInt() << 0).withOpacity(1.0);
   }
 }
