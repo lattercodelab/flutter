@@ -13,12 +13,18 @@ class _ListViewScreenState extends State<ListViewScreen> {
       appBar: AppBar(title: Text("ListView")),
           body: ListView(
          children: <Widget>[
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.red[200]),
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.green[200]),
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.blue[200]),
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.redAccent),
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.greenAccent),
-           WidgetHelper.colorBox(width: 100, height: 100, color: Colors.blueAccent),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox(),
+           WidgetHelper.colorBox()
          ],
       ),
     );

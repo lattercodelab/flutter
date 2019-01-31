@@ -20,12 +20,9 @@ class _IntrinsicHeightScreenState extends State<IntrinsicHeightScreen> {
       body: IntrinsicHeight( // match absolute size
         child: Row(
           children: <Widget>[
-            WidgetHelper.colorBox(
-                width: 100, color: Colors.red[300]),
-            WidgetHelper.colorBox(
-                width: 100, height: 200, color: Colors.blue[200]),
-            WidgetHelper.colorBox(
-                width: 100, color: Colors.green[500])
+            WidgetHelper.colorBox(width: 100, color: Colors.red[300]),
+            WidgetHelper.colorBox(width: 100, height: 200, color: Colors.blue[200]),
+            WidgetHelper.colorBox(width: 100, color: Colors.green[500])
           ],
         ),
       ),

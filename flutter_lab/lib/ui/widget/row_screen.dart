@@ -18,9 +18,9 @@ class _RowScreenState extends State<RowScreen> {
           mainAxisSize: MainAxisSize.min, //min = wrap_content, max = match_parent
           crossAxisAlignment: CrossAxisAlignment.start, //Gravity
           children: <Widget>[
-            WidgetHelper.colorBox(width: 100, height: 100, color: Colors.red),
-            WidgetHelper.colorBox(width: 100, height: 100, color: Colors.blue),
-            WidgetHelper.colorBox(width: 100, height: 100, color: Colors.green)
+            WidgetHelper.colorBox(),
+            WidgetHelper.colorBox(),
+            WidgetHelper.colorBox()
           ],
         ),
       ),

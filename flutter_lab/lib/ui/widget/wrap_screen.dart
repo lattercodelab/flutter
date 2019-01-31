@@ -18,10 +18,10 @@ class _WrapScreen extends State<WrapScreen>{
       body: Wrap(
         children: <Widget>[
           WidgetHelper.colorBox(width: 100),
-          WidgetHelper.colorBox(width: 200, color: Colors.red[200]),
-          WidgetHelper.colorBox(width: 300, color: Colors.red[300]),
-          WidgetHelper.colorBox(width: 400, color: Colors.red[400]),
-          WidgetHelper.colorBox(width: 500, color: Colors.red[500]),
+          WidgetHelper.colorBox(width: 200),
+          WidgetHelper.colorBox(width: 300),
+          WidgetHelper.colorBox(width: 400),
+          WidgetHelper.colorBox(width: 500),
         ],
       ),
     );

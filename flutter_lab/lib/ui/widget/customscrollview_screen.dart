@@ -37,7 +37,7 @@ class _CustomScrollViewScreenState extends State<CustomScrollViewScreen> {
               SliverFixedExtentList(
                 itemExtent: 200,
                 delegate: SliverChildBuilderDelegate((context, indxe){
-                  return WidgetHelper.colorBox(height: 100, width: 100, color: Colors.green[200]);
+                  return WidgetHelper.colorBox(height: 100, width: 100);
                 }, childCount: 200)
               )
           ],

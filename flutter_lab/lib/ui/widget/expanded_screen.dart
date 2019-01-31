@@ -21,7 +21,7 @@ class _ExpandedState extends State<ExpandedScreen> {
            ),
            Expanded(
              flex: 1,
-             child: WidgetHelper.colorBox(width: 10, height: 100, color: Colors.blue[500]),
+             child: WidgetHelper.colorBox(width: 10, height: 100),
            )
          ],
        ),
