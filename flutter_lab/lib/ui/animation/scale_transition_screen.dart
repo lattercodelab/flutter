@@ -24,7 +24,8 @@ class _ScaleTransitionScreenState extends State<ScaleTransitionScreen> with Sing
       begin: 1.0,
       end: 0.2
     ).animate(_controller);
-    
+  
+  
   }
   
   @override
