@@ -24,7 +24,8 @@ class _ScaleTransitionScreenState extends State<ScaleTransitionScreen> with Sing
       begin: 1.0,
       end: 0.2
     ).animate(_controller);
-    
+  
+  
   }
   
   @override
@@ -51,6 +52,7 @@ class _ScaleTransitionScreenState extends State<ScaleTransitionScreen> with Sing
               setState(() {
                 _scaleTrans = !_scaleTrans;
               });
+              
 
               _scaleTrans ? _controller.forward() : _controller.reverse();
             }, name: _scaleTrans ? "Zoom In" : "Zoom Out")
