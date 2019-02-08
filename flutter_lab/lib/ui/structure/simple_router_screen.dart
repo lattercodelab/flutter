@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_lab/ui/routers/home_screen.dart';
 import 'package:flutter_lab/ui/routers/profile_screen.dart';
 
+void main() {
+  runApp(SimpleRouterScreen());
+}
+
 class SimpleRouterScreen extends StatefulWidget {
   _SimpleRouterScreenState createState() => _SimpleRouterScreenState();
 }

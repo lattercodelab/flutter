@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_lab/tools/widget_helper.dart';
 
 class MediaQueryScreen extends StatefulWidget {
   _MediaQueryScreenState createState() => _MediaQueryScreenState();
