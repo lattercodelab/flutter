@@ -49,8 +49,4 @@ class _NewsBlocScreenState extends State<NewsBlocScreen> {
     _newsBloc.dispose();
     super.dispose();
   }
-
-  Widget _buildItem(Article article) {
-    return Text('Article : $article');
-  }
 }
