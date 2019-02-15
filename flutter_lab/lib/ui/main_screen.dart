@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
         ),
         body: GridView(
+          key: Key('main_gridview'),
           children: <Widget>[
             WidgetHelper.buttonOpen(context, PlaygroundScreen(), name: "Playground"),
             WidgetHelper.buttonOpen(context, AsyncScreen(), name: "Async"),
