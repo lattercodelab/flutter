@@ -4,6 +4,7 @@ import 'package:flutter_lab/playground/playground_screen.dart';
 import 'package:flutter_lab/tools/widget_helper.dart';
 import 'package:flutter_lab/ui/animation_screen.dart';
 import 'package:flutter_lab/ui/bloc_screen.dart';
+import 'package:flutter_lab/ui/hardware_screen.dart';
 import 'package:flutter_lab/ui/router_screen.dart';
 import 'package:flutter_lab/ui/service_screen.dart';
 import 'package:flutter_lab/ui/ui_screen.dart';
@@ -50,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
             WidgetHelper.buttonOpen(context, ServiceScreen(), name: "Service"),
             WidgetHelper.buttonOpen(context, BlocScreen(), name: "Bloc"),
             WidgetHelper.buttonOpen(context, UiScreen(), name: "Ui"),
+            WidgetHelper.buttonOpen(context, HardwareScreen(), name: "Hardware"),
             WidgetHelper.buttonOpen(context, ServiceScreen(), name: "Experimenet"),
           ],
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
