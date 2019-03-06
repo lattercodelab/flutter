@@ -8,13 +8,21 @@
             "name": "Dev",
             "type": "dart",
             "request": "launch",
-            "program": "lib/flavors/main-dev.dart"
+            "program": "lib/flavors/main-dev.dart",
+            "args": [
+                "--flavor",
+                "dev"
+            ]
         },
         {
             "name": "Uat",
             "type": "dart",
             "request": "launch",
-            "program": "lib/flavors/main-uat.dart"
+            "program": "lib/flavors/main-uat.dart",
+            "args": [
+                "--flavor",
+                "uat"
+            ]
         },
         {
             "name": "Release",
