@@ -13,7 +13,6 @@ class CameraScreen extends StatefulWidget {
 }
 
 class _CameraScreenState extends State<CameraScreen> {
-
   List<CameraDescription> camera;
   int selectedCameraIndex = -1;
   CameraController cameraController;
@@ -21,17 +20,17 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   void initState() {
     super.initState();
-    availableCameras().then((_aviableCameras){
-        camera =_aviableCameras;
+    availableCameras().then((_aviableCameras) {
+      camera = _aviableCameras;
 
-        if(camera.length > 0){
-          setState(() {
-            selectedCameraIndex = 0;
-          });
-        }
+      if (camera.length > 0) {
+        setState(() {
+          selectedCameraIndex = 0;
+        });
+      }
 
-        openCamera(camera[selectedCameraIndex]).then((void v){});
-    }).catchError((error){
+      openCamera(camera[selectedCameraIndex]).then((void v) {});
+    }).catchError((error) {
       print('Error: $error.code\nError Message: $error.message');
     });
   }
@@ -45,40 +44,63 @@ class _CameraScreenState extends State<CameraScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Camera'),
+      appBar: AppBar(
+        title: Text('Camera'),
+      ),
+      body: SafeArea(
+        child: Container(
+          child: Stack(
+            children: <Widget>[
+              _getCameraPreview(),
+              _getCameraButton()
+            ],
+          ),
         ),
-        body: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            FloatingActionButton(
-              child: Icon(getCameraIcon(null)),
-              tooltip: 'Camera', 
-              onPressed: () {
-                switchCamera();
-              },
-            )
-          ]
-        ),
+      ),
+    );
+  }
+
+  Widget _getCameraButton() {
+    return Align(
+              alignment: AlignmentDirectional.bottomEnd,
+              child: Container(
+                  margin: EdgeInsets.all(20.0),
+                  child: FloatingActionButton(
+                      child: Icon(getCameraIcon(null)),
+                      tooltip: 'Camera',
+                      onPressed: () {
+                        switchCamera();
+                      })),
+            );
+  }
+
+  Widget _getCameraPreview(){
+    return Align(
+      alignment: AlignmentDirectional.center,
+      child: cameraController == null || cameraController?.value == null ||
+              !cameraController.value.isInitialized ? 
+              Text('Tap a camera.') : 
+              AspectRatio(
+                aspectRatio: cameraController.value.aspectRatio,
+                child: CameraPreview(cameraController),
+              ),
     );
   }
 
   Future openCamera(CameraDescription cameraDescription) async {
-    if(cameraController != null){
+    if (cameraController != null) {
       await cameraController.dispose();
     }
 
     cameraController = CameraController(cameraDescription, ResolutionPreset.medium);
-    cameraController.addListener((){
-      if(mounted){
-        setState(() { });
+    cameraController.addListener(() {
+      if (mounted) {
+        setState(() {});
       }
-    
-      if(cameraController.value.hasError){
+
+      if (cameraController.value.hasError) {
         showError('Camera error ${cameraController.value.errorDescription}');
       }
-    
     });
 
     try {
@@ -90,11 +112,10 @@ class _CameraScreenState extends State<CameraScreen> {
     if (mounted) {
       setState(() {});
     }
-
   }
 
-  IconData getCameraIcon(CameraLensDirection direction){
-    switch(direction){
+  IconData getCameraIcon(CameraLensDirection direction) {
+    switch (direction) {
       case CameraLensDirection.front:
         return Icons.camera_front;
       case CameraLensDirection.back:
@@ -106,21 +127,18 @@ class _CameraScreenState extends State<CameraScreen> {
     }
   }
 
-  void switchCamera(){
-    selectedCameraIndex = selectedCameraIndex < camera.length - 1 
-                          ? selectedCameraIndex + 1 
-                          : 0;
+  void switchCamera() {
+    selectedCameraIndex =
+        selectedCameraIndex < camera.length - 1 ? selectedCameraIndex + 1 : 0;
   }
 
-  void showError(String msg){
+  void showError(String msg) {
     Fluttertoast.showToast(
-      msg: msg,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.CENTER,
-      timeInSecForIos: 1,
-      backgroundColor: Colors.red,
-      textColor: Colors.white
-    );
+        msg: msg,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white);
   }
-  
 }
